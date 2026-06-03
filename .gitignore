@@ -1,0 +1,35 @@
+# virtual env
+venv/
+
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# env
+.env
+
+# logs
+*.log
+
+# vscode
+.vscode/
+
+# macOS
+.DS_Store
+
+# pytest
+.pytest_cache/
+
+# models (optional)
+# Uncomment if models are large/private
+models/*.keras
+models/*.h5
+models/*.npy
+
+# tensorflow cache
+*.pb
+
+# jupyter
+.ipynb_checkpoints/
