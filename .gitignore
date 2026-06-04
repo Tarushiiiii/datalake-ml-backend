@@ -22,13 +22,6 @@ __pycache__/
 # pytest
 .pytest_cache/
 
-# models (optional)
-# Uncomment if models are large/private
-models/*.keras
-models/*.h5
-models/*.npy
-models/*.pth
-
 # tensorflow cache
 *.pb
 
