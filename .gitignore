@@ -27,3 +27,6 @@ __pycache__/
 
 # jupyter
 .ipynb_checkpoints/
+
+models/*py
+models/best_eye_model

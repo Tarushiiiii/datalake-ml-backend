@@ -1,9 +1,14 @@
-from pydantic import BaseModel
 from typing import Optional
+from pydantic import BaseModel
+
 
 class HeadMovementResponse(BaseModel):
+
     success: bool
+    stage: Optional[str] = None
     message: Optional[str] = None
+    confidence: Optional[float] = None
+    session_id: Optional[str] = None
 
 
 class BlinkDetectionResponse(BaseModel):
