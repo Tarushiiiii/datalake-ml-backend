@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import os
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-os.environ["TF_ENABLE_ONEDNN_OPTS"]  = "0"
-
-# then all other imports below
-=======
->>>>>>> parent of ff6206f (configured model service)
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
