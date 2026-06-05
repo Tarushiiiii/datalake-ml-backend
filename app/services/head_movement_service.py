@@ -1,23 +1,3 @@
-"""
-backend/app/services/head_movement_service.py
-
-Per-session head-movement challenge-response state machine.
-
-Stage sequence:
-    look_straight → turn_left → center → turn_right → final_center → verified
-
-Direction detection uses MediaPipe Face Mesh (468 landmarks) to compute the
-horizontal yaw angle from nose tip + ear landmark positions. This is far more
-reliable than Haar cascades on front-facing phone cameras, which rarely
-produce a clean enough profile to trigger haarcascade_profileface.xml.
-
-Yaw thresholds (tunable at the top of this file):
-    CENTER_MAX_YAW  — degrees either side of 0 that count as "center"
-    TURN_MIN_YAW    — degrees a face must rotate to count as "left" or "right"
-
-Model path: backend/models/head_movement.pth  (relative to uvicorn launch dir)
-"""
-
 import threading
 import cv2
 import numpy as np

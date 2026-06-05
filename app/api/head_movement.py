@@ -1,12 +1,3 @@
-"""
-backend/app/api/head_movement.py
-
-FastAPI router for the /head-movement endpoint.
-
-The session_id from FrameRequest is forwarded to the service layer so each
-mobile client gets its own isolated state machine — no cross-session bleed.
-"""
-
 from fastapi import APIRouter
 
 from app.schemas.requests  import FrameRequest
