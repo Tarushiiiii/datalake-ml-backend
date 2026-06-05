@@ -12,6 +12,9 @@ import cv2
 import mediapipe as mp
 import numpy as np
 
+# ─────────────────────────────────────────────────────────────
+# Helpers
+# ─────────────────────────────────────────────────────────────
 
 # ── Suppress Keras 3 C-level stdout on model load ────────────────────────────
 
@@ -32,6 +35,11 @@ def _load_model_silently(path):
 eye_model = _load_model_silently("models/blink_eye.keras")
 print("✅ Eye model loaded")
 
+        with mp_face_mesh.FaceMesh(
+            static_image_mode=True,
+            max_num_faces=1,
+            refine_landmarks=False,
+        ) as face_mesh:
 
 # ── MediaPipe singleton (static_image_mode avoids video-tracking state) ──────
 
@@ -86,6 +94,10 @@ def _crop_eye(frame, eye_pts):
     y2 = min(max(ys) + 10, frame.shape[0])
     return frame[y1:y2, x1:x2]
 
+        print(
+            f"EAR={ear:.3f} "
+            f"(L={left_ear:.3f}, R={right_ear:.3f})"
+        )
 
 # ── Preprocessing (exactly as notebook) ──────────────────────────────────────
 
@@ -117,8 +129,10 @@ def detect_blink(frame) -> dict:
     rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = _face_mesh.process(rgb)
 
-    if not results.multi_face_landmarks:
-        return {"success": False, "blink_count": 0, "message": "No face detected"}
+                print(
+                    f"✅ Blink Count = "
+                    f"{blink_state['blink_count']} / {REQUIRED_BLINKS}"
+                )
 
     face = results.multi_face_landmarks[0]
     h, w, _ = frame.shape
@@ -137,8 +151,7 @@ def detect_blink(frame) -> dict:
     left_crop  = _crop_eye(frame, left_pts)
     right_crop = _crop_eye(frame, right_pts)
 
-    if left_crop.size == 0 or right_crop.size == 0:
-        return {"success": False, "blink_count": 0, "message": "Eye crop failed"}
+            print("🎉 Blink Verification Complete")
 
     left_input  = _preprocess(left_crop)   # (1, 96, 96, 3)
     right_input = _preprocess(right_crop)  # (1, 96, 96, 3)

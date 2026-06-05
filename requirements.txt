@@ -5,7 +5,8 @@ numpy<2.0.0
 opencv-python
 
 # TensorFlow + Keras (pinned together, Windows Intel build)
-tensorflow-intel==2.15.0
+tensorflow-macos==2.15.0
+tensorflow-metal
 tf-keras==2.15.0
 
 # MediaPipe (compatible with protobuf 4.x)
