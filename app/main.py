@@ -1,5 +1,8 @@
-# backend/app/main.py
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+os.environ["TF_ENABLE_ONEDNN_OPTS"]  = "0"
 
+# then all other imports below
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 

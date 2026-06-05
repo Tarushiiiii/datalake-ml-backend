@@ -1,9 +1,24 @@
 fastapi
 uvicorn
-tensorflow
-opencv-python
-mediapipe
-numpy
 python-multipart
+numpy<2.0.0
+opencv-python
+
+# TensorFlow + Keras (pinned together, Windows Intel build)
+tensorflow-intel==2.15.0
+tf-keras==2.15.0
+
+# MediaPipe (compatible with protobuf 4.x)
+mediapipe==0.10.14
+protobuf>=4.25.3,<5.0.0
+
+# PyTorch (CPU)
 torch
 torchvision
+
+# Face recognition
+insightface
+onnxruntime
+
+# Blink detection
+scipy

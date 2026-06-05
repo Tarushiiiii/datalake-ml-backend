@@ -1,5 +1,3 @@
-# backend/app/schemas/responses.py
-
 from typing import Literal, Optional
 from pydantic import BaseModel
 
@@ -34,9 +32,8 @@ class BlinkDetectionResponse(BaseModel):
     blink_count: Optional[int] = None
     message:     Optional[str] = None
 
-
 class FaceRecognitionResponse(BaseModel):
-    matched:    bool
-    confidence: float
-    user_id:    Optional[str] = None
-    message:    Optional[str] = None
+    success: bool
+    message: str
+    identity: Optional[str] = None
+    score: Optional[float] = None
