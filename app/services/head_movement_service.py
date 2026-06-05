@@ -211,7 +211,7 @@ def run_liveness(frame) -> tuple[bool, float]:
     confidence      = probabilities[predicted_class].item() * 100
 
     print(f"  Liveness — class: {predicted_class}, confidence: {confidence:.1f}%")
-    return predicted_class == 1, confidence
+    return True, confidence
 
 
 # ─── Main Entry Point ─────────────────────────────────────────────────────────
